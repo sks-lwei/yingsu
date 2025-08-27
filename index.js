@@ -1636,6 +1636,7 @@ function formatSpeed(bytesPerSecond) {
 async function runTest() {
   const { apiList, speedTestConfig } = config;
   const results = {};
+  const result_succes = [];
   
   console.log('开始测试采集接口速度...');
   console.log(`共有 ${apiList.length} 个接口需要测试`);
@@ -1686,6 +1687,9 @@ async function runTest() {
         
         if (bestResult && bestResult.success) {
           console.log(`    响应时间: ${bestResult.responseTime}ms, 结果数量: ${bestResult.resultCount}`);
+
+          console.log(`    保存地址结果`);
+          result_succes.push({ api: ${api.name} (${api.api})});
           
           // 如果搜索成功且有结果，测试第一个结果的详情
           if (bestResult.resultList && bestResult.resultList.length > 0) {
@@ -1778,7 +1782,12 @@ async function runTest() {
 
     index++;
   }
-  
+
+  result_succes.forEach(fruit => {
+    console.log('   =================测试完成=========================');
+    console.log(fruit);
+  });
+
   // 计算综合得分并排序
   const sortedResults = calculateScores(results);
   
