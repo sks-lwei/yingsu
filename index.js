@@ -1689,7 +1689,7 @@ async function runTest() {
           console.log(`    响应时间: ${bestResult.responseTime}ms, 结果数量: ${bestResult.resultCount}`);
 
           console.log(`    保存地址结果`);
-          result_succes.push({ api: ${api.name} (${api.api})});
+          result_succes.push({ name: `${api.name}`, api: `${api.api}` });
           
           // 如果搜索成功且有结果，测试第一个结果的详情
           if (bestResult.resultList && bestResult.resultList.length > 0) {
@@ -1783,10 +1783,11 @@ async function runTest() {
     index++;
   }
 
-  result_succes.forEach(fruit => {
-    console.log('   =================测试完成=========================');
-    console.log(fruit);
-  });
+  console.log('   =================测试完成=========================');
+  console.log(result_succes);
+  // result_succes.forEach(fruit => {
+  //   console.log(fruit);
+  // });
 
   // 计算综合得分并排序
   const sortedResults = calculateScores(results);
